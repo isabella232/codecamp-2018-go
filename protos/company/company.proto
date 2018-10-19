@@ -1,11 +1,26 @@
 syntax = "proto3";
 import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
 package namely.examples.company;
 
 service CompanyService {
-  rpc CreateCompany(CreateCompanyRequest) returns (Company) {}
-  rpc GetCompany(GetCompanyRequest) returns (Company) {}
-  rpc SetCompanyCeo(SetCompanyCeoRequest) returns (google.protobuf.Empty) {}
+  rpc CreateCompany(CreateCompanyRequest) returns (Company) {
+    option (google.api.http) = {
+      post: "/companies",
+      body: "company"
+    };
+  }
+  rpc GetCompany(GetCompanyRequest) returns (Company) {
+    option (google.api.http) = {
+      get: "/companies/{company_uuid}"
+    };
+  }
+  rpc SetCompanyCeo(SetCompanyCeoRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      post: "/companies/{company_uuid}/ceo",
+      body: "*"
+    };
+  }
 }
 
 message Address {

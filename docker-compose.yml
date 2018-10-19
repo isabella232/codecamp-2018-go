@@ -13,3 +13,21 @@ services:
       - 50052:50051
     depends_on:
       - company
+
+  employee-gw:
+    build: ./employee/gen/employee-gw
+    ports:
+      - 8081:80
+    environment:
+      - EMPLOYEESERVICE_BACKEND=employee:50051
+    depends_on:
+      - employee
+
+  company-gw:
+    build: ./company/gen/company-gw
+    ports:
+      - 8082:80
+    environment:
+      - COMPANYSERVICE_BACKEND=company:50051
+    depends_on:
+      - company

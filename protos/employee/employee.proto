@@ -1,9 +1,19 @@
 syntax = "proto3";
+import "google/api/annotations.proto";
 package namely.examples.employee;
 
 service EmployeeService {
-  rpc CreateEmployee(CreateEmployeeRequest) returns (Employee) {}
-  rpc ListEmployees(ListEmployeesRequest) returns (ListEmployeesResponse) {}
+  rpc CreateEmployee(CreateEmployeeRequest) returns (Employee) {
+    option (google.api.http) = {
+      post: "/employees",
+      body: "employee"
+    };
+  }
+  rpc ListEmployees(ListEmployeesRequest) returns (ListEmployeesResponse) {
+    option (google.api.http) = {
+      get: "/employees/{company_uuid}"
+    };
+  }
 }
 
 message Employee {
