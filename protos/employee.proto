@@ -1,0 +1,20 @@
+syntax = "proto3";
+package namely.examples.employee;
+
+service EmployeeService {
+  rpc CreateEmployee(CreateEmployeeRequest) returns (Employee) {}
+  rpc ListEmployees(ListEmployeesRequest) returns (ListEmployeesResponse) {}
+}
+
+message Employee {
+  string employee_uuid = 1;
+  string company_uuid = 2;
+  string name = 3;
+  int32 badge_number = 4;
+}
+
+message CreateEmployeeRequest { Employee employee = 1; }
+
+message ListEmployeesRequest { string company_uuid = 1; }
+
+message ListEmployeesResponse { repeated Employee employees = 1; }

@@ -1,0 +1,15 @@
+version: "3.6"
+services:
+  company:
+    build: ./company
+    command: company -port 50051
+    ports:
+      - 50051:50051
+
+  employee:
+    build: ./employee
+    command: employee -port=50051 -company_addr=company:50051
+    ports:
+      - 50052:50051
+    depends_on:
+      - company
