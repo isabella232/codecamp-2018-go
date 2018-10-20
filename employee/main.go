@@ -8,8 +8,8 @@ import (
 	"net"
 	"sync"
 
-	company_pb "github.com/namely/codecamp-2018-go/employee/gen/company/protos"
-	employee_pb "github.com/namely/codecamp-2018-go/employee/gen/employee/protos"
+	company_pb "github.com/namely/codecamp-2018-go/employee/gen/protos/company"
+	employee_pb "github.com/namely/codecamp-2018-go/employee/gen/protos/employee"
 	"github.com/satori/go.uuid"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"

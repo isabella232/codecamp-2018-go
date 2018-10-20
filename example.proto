@@ -1,0 +1,45 @@
+// An example protocol buffer - see protos/ for the actual
+// protos used.
+
+syntax = "proto3";
+package examples;
+message Employee {
+  string employee_uuid = 1;
+  string company_uuid = 2;
+  string name = 3;
+  int32 badge_number = 4;
+}
+
+message Address {
+  string address1 = 1;
+  string address2 = 2;
+  string zip = 3;
+  string state = 4;
+}
+
+message Company {
+  string company_uuid = 1;
+  Address office_location = 2;
+  string ceo_employee_uuid = 3;
+}
+
+service EmployeeService {
+  rpc CreateEmployee(CreateEmployeeRequest)
+    returns (Employee) {}
+
+  rpc ListEmployees(ListEmployeesRequest)
+    returns (ListEmployeesResponse) {}
+}
+
+message CreateEmployeeRequest {
+  Employee employee = 1;
+}
+
+message ListEmployeesRequest {
+  string company_uuid = 1;
+}
+
+message ListEmployeesResponse {
+  repeated Employee employees = 1;
+}
+

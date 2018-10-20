@@ -8,7 +8,7 @@ docker run -v `pwd`:/defs namely/protoc-all	-f protos/company/company.proto -o c
 
 # Generate the gateways.
 docker run -v `pwd`:/defs namely/gen-grpc-gateway \
-    -f protos/employee/employee.proto -o employee/gen/employee-gw -s EmployeeService
+    -f protos/employee/employee.proto -o gen/employee-gw -s EmployeeService
 
 docker run -v `pwd`:/defs namely/gen-grpc-gateway \
-    -f protos/company/company.proto -o company/gen/company-gw -s CompanyService
+    -f protos/company/company.proto -o gen/company-gw -s CompanyService

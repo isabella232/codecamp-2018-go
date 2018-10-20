@@ -15,7 +15,7 @@ services:
       - company
 
   employee-gw:
-    build: ./employee/gen/employee-gw
+    build: ./gen/employee-gw
     ports:
       - 8081:80
     environment:
@@ -24,7 +24,7 @@ services:
       - employee
 
   company-gw:
-    build: ./company/gen/company-gw
+    build: ./gen/company-gw
     ports:
       - 8082:80
     environment:

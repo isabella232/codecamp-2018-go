@@ -9,7 +9,7 @@ import (
 	"sync"
 
 	"github.com/golang/protobuf/ptypes/empty"
-	pb "github.com/namely/codecamp-2018-go/company/gen/company/protos"
+	pb "github.com/namely/codecamp-2018-go/company/gen/protos/company"
 	"github.com/satori/go.uuid"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
