@@ -91,6 +91,12 @@ func (s *EmployeeServer) GetOrCreateEmployeeCollection(companyUUID string) *Empl
 	return ec
 }
 
+// SaveEmployee saves the employee
+func (s *EmployeeServer) SaveEmployee(employee *employee_pb.Employee) *employee_pb.Employee {
+	ec := s.GetOrCreateEmployeeCollection(employee.CompanyUuid)
+	return ec.AddEmployee(employee)
+}
+
 // CreateEmployee creates a new employee in the given company.
 func (s *EmployeeServer) CreateEmployee(ctx context.Context, req *employee_pb.CreateEmployeeRequest) (*employee_pb.Employee, error) {
 	if req.Employee == nil {
@@ -114,8 +120,7 @@ func (s *EmployeeServer) CreateEmployee(ctx context.Context, req *employee_pb.Cr
 	}
 
 	// If we're here, we can create the employee
-	ec := s.GetOrCreateEmployeeCollection(req.Employee.CompanyUuid)
-	return ec.AddEmployee(req.Employee), nil
+	return s.SaveEmployee(req.Employee), nil
 }
 
 // ListEmployees returns all emplyees in the given company.
