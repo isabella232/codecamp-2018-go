@@ -5,7 +5,7 @@ This application was made for CodeCamp NYC 2018 to demonstrate gRPC, Docker and 
 It's not meant to be idiomatic Go code, but rather to demonstrate a simple microservices
 environment.
 
-(TODO LINK SLIDES)
+Slides: https://www.slideshare.net/MartinKess/building-services-with-grpc-docker-and-go
 
 ## Building
 Run ./gen_protos.sh first to generate the required files. You only have to do this when you change
